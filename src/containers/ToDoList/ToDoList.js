@@ -31,11 +31,11 @@ class ToDoList extends React.PureComponent {
     const addItemHandler = event => {
       event.preventDefault();
       const { tasks, currentTask } = this.state;
-      let newTasks = [...tasks, currentTask];
+      const newTasks = [...tasks, currentTask];
       this.setState({ tasks: newTasks, currentTask: '' });
     };
 
-    const resetListHandler = event => {
+    const resetListHandler = () => {
       this.setState({ tasks: [] });
     };
 

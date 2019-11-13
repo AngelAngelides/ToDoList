@@ -18,7 +18,7 @@ const ResetListButton = ({ resetListHandler }) => (
 );
 
 ResetListButton.propTypes = {
-  resetListHandler: PropTypes.array.isRequired,
+  resetListHandler: PropTypes.func.isRequired,
 };
 
 export default ResetListButton;
