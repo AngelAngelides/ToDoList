@@ -2,6 +2,7 @@ import React from 'react';
 
 import NewToDoItem from '../../components/NewToDoItem';
 import ToDoItems from '../../components/ToDoItems';
+import ResetListButton from '../../components/ResetListButton';
 
 import styled from 'styled-components';
 
@@ -34,6 +35,10 @@ class ToDoList extends React.PureComponent {
       this.setState({ tasks: newTasks, currentTask: '' });
     };
 
+    const resetListHandler = event => {
+      this.setState({ tasks: [] });
+    };
+
     const { tasks, currentTask } = this.state;
     return (
       <StyledToDoList>
@@ -43,6 +48,7 @@ class ToDoList extends React.PureComponent {
           changeInput={changeInput}
           value={currentTask}
         />
+        <ResetListButton resetListHandler={resetListHandler} />
       </StyledToDoList>
     );
   }
