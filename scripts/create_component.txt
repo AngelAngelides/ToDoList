@@ -1,0 +1,8 @@
+#!/bin/bash
+read componentName
+
+mkdir ./src/components/$componentName
+touch ./src/components/$componentName/index.js
+echo -e "export { default } from \"./$componentName\";" >> ./src/components/$componentName/index.js
+touch ./src/components/$componentName/$componentName.js
+echo -e "import React from \"react\";\n\nconst $componentName = () => <div />;\n\nexport default $componentName;" >> ./src/components/$componentName/$componentName.js

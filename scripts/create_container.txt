@@ -1,0 +1,8 @@
+#!/bin/bash
+read containerName
+
+mkdir ./src/containers/$containerName
+touch ./src/containers/$containerName/index.js
+echo -e "export { default } from \"./$containerName\";" >> ./src/containers/$containerName/index.js
+touch ./src/containers/$containerName/$containerName.js
+echo -e "import React from \"react\";\n\nclass $containerName extends React.Component {\n  state = {};\n\n  render() {\n    return <div />;\n  }\n}\n\nexport default $containerName;" >> ./src/containers/$containerName/$containerName.js
