@@ -7,8 +7,8 @@ import styled from 'styled-components';
 const StyledLabel = styled.label`
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
+  padding-left: 32px;
+  margin-bottom: 16px;
   cursor: pointer;
   font-size: 22px;
   -webkit-user-select: none;
@@ -21,19 +21,19 @@ const StyledCheckMark = styled.span`
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 24px;
+  width: 24px;
   background-color: ${props => (props.isChecked ? '#2196F3' : '#eee')};
   :after {
     content: '';
     position: absolute;
     display: ${props => (props.isChecked ? 'block' : 'none')};
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
+    left: 8px;
+    top: 4px;
+    width: 4px;
+    height: 8px;
     border: solid white;
-    border-width: 0 3px 3px 0;
+    border-width: 0 4px 4px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
@@ -43,13 +43,19 @@ const StyledCheckMark = styled.span`
   }
 `;
 
-const ToDoItem = ({ children }) => {
+const ToDoItem = ({ children, onDropEventHandler }) => {
   const [isChecked, setIsChecked] = useState(false);
-
-  console.log(isChecked);
+  const allowDrop = event => {
+    event.preventDefault();
+    console.log('over');
+  };
 
   return (
-    <StyledLabel>
+    <StyledLabel
+      draggable={true}
+      onDrop={onDropEventHandler}
+      onDragOver={allowDrop}
+    >
       {children}
       <StyledCheckMark
         isChecked={isChecked}
@@ -61,6 +67,7 @@ const ToDoItem = ({ children }) => {
 
 ToDoItem.propTypes = {
   children: PropTypes.string.isRequired,
+  onDropEventHandler: PropTypes.func.isRequired,
 };
 
 export default ToDoItem;
